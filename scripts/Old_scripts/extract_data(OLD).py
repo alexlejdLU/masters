@@ -213,11 +213,11 @@ print(merged_df.shape)
 ######################## - plot data - Create a subplot with two y-axes
 fig = make_subplots(specs=[[{"secondary_y": True}]])
 fig.add_trace(
-    go.Scatter(x=merged_df['date'], y=merged_df['post_count'], name='Post Count', mode='lines'),
+    go.Scatter(x=merged_df['date'], y=merged_df['post_score'], name='Post Score', mode='lines'),
     secondary_y=False,
 )
 fig.add_trace(
-    go.Scatter(x=merged_df['date'], y=merged_df['Close'], name='Close Price', mode='lines'),
+    go.Scatter(x=merged_df['date'], y=merged_df['post_upvotes'], name='Post Upvotes', mode='lines'),
     secondary_y=True,
 )
 fig.update_layout(title_text='Reddit Post Count and SNDL Close Price')
