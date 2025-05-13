@@ -161,11 +161,11 @@ first_time_commenting_per_day.rename(columns={'index': 'date'}, inplace=True)
 ######################### - Volume and close price data  Y-finance
 
 # Volume and close price data Y-finance
-sndl = yf.download("SNDL", start=df_posts['date'].min(), end=df_posts['date'].max())
-close_prices = sndl['Close'].to_numpy()
-open_prices = sndl['Open'].to_numpy()
-volumes = sndl['Volume'].to_numpy()
-dfYf = pd.DataFrame(np.column_stack([close_prices, volumes, open_prices]), columns=['Close', 'Volume', 'Open'], index=sndl.index)
+amd = yf.download("AMD", start=df_posts['date'].min(), end=df_posts['date'].max())
+close_prices = amd['Close'].to_numpy()
+open_prices = amd['Open'].to_numpy()
+volumes = amd['Volume'].to_numpy()
+dfYf = pd.DataFrame(np.column_stack([close_prices, volumes, open_prices]), columns=['Close', 'Volume', 'Open'], index=amd.index)
 #fixing non trading days
 dfYf = dfYf.reindex(complete_date_range)
 dfYf[['Close', 'Volume', 'Open']] = dfYf[['Close', 'Volume', 'Open']].ffill()

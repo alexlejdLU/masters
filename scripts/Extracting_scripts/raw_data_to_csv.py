@@ -3,9 +3,12 @@ import json
 import yfinance as yf
 import numpy as np
 
-jsonl_file_posts    = "data_raw/ASTS/r_ASTspacemobile_posts.jsonl"
-jsonl_file_comments = "data_raw/ASTS/r_ASTspacemobile_comments.jsonl"
-name = "ASTS_data"
+# Define stock ticker IMPORTANT (DO NOT FORGET)
+
+ticker = "AMD"
+jsonl_file_posts    = "data_raw/AMD/r_amd_stock_posts.jsonl"
+jsonl_file_comments = "data_raw/AMD/r_amd_stock_comments.jsonl"
+name = "AMD_data"
 
 # ── 1) Load & aggregate posts ──────────────────────────────────────────────────
 posts = []
@@ -20,13 +23,11 @@ with open(jsonl_file_posts, 'r') as f:
         date = pd.to_datetime(obj['created_utc'], unit='s').normalize()
         ups   = obj.get('ups', 0)
         ratio = obj.get('upvote_ratio', 1.0)
-        down  = ups - (ups * ratio)
         author = obj.get('author')
 
         posts.append({
             'date': date,
             'ups': ups,
-            'downvotes': down,
             'first_time_post': int(author and author not in seen_posters)
         })
         if author and author not in seen_posters:
@@ -39,7 +40,6 @@ posts_per_day = (
       .agg(
           post_count            = ('ups',       'size'),
           post_upvotes          = ('ups',       'sum'),
-          post_downvotes        = ('downvotes', 'sum'),
           first_time_post_count = ('first_time_post','sum')
       )
       .reset_index()
@@ -97,25 +97,25 @@ posts_per_day    = reindex_zero(posts_per_day)
 comments_per_day = reindex_zero(comments_per_day)
 
 # ── 4) Pull stock data from yfinance & fix the multi‐index issue ────────────────────
-sndl = yf.download(
-    "SNDL",
+amd = yf.download(
+    ticker,
     start = complete_date_range.min(),
     end   =(complete_date_range.max() + pd.Timedelta(days=1)),
     auto_adjust=False
 )
 
 # yf.download returned a MultiIndex (e.g. Price/Ticker), drop the extra level:
-if isinstance(sndl.columns, pd.MultiIndex):
-    sndl.columns = sndl.columns.get_level_values(0)
+if isinstance(amd.columns, pd.MultiIndex):
+    amd.columns = amd.columns.get_level_values(0)
 
-close_prices = sndl['Close'].to_numpy()
-open_prices  = sndl['Open'].to_numpy()
-volumes      = sndl['Volume'].to_numpy()
+close_prices = amd['Close'].to_numpy()
+open_prices  = amd['Open'].to_numpy()
+volumes      = amd['Volume'].to_numpy()
 
 dfYf = pd.DataFrame(
     np.column_stack([close_prices, volumes, open_prices]),
     columns=['Close','Volume','Open'],
-    index=sndl.index
+    index=amd.index
 )
 
 # align to full date range, filling non-trading days

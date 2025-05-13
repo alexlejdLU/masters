@@ -1,222 +1,130 @@
 #!/usr/bin/env python3
 """
-Epidemic-HMM: simplified implementation focusing on post_count only.
-Based on Phillips & Gorse (2017) epidemic-detection hidden-Markov model.
+prior_windows.py
+----------------
+Utility for computing Gelman-style weakly–informative *variance* priors
+on a rolling window, exactly as described in Gorse et al. (2023).
 
-Usage (bash):
-    python epidemic_hmm.py data/bitcoin.csv --window 100 --n_init 20 --out btc_epidemic_probs.csv
+Core outputs per window
+=======================
+    window_end   pandas.Timestamp      last day included in this window
+    a            float                 lower bound for all σ-priors
+    b            float                 upper bound for all σ-priors
 
-The script reads a single CSV (one cryptocurrency / subreddit),
-computes first-order differences for the post_count indicator, trains a
-2-state switching AR(1) HMM on a rolling window, and writes the
-probability that the **last** point in each window is in the epidemic
-state.
-
-Dependencies:
-    pandas, numpy, statsmodels (>= 0.14), tqdm (optional progress bar).
-
-See README.md for details.
+The calling code (your EM/HMM routine) will read the `a` and `b` columns
+row-by-row and set Uniform(a,b) priors for σ_E, σ_NE and d *before* running
+expectation–maximisation on that same window.
 """
 from __future__ import annotations
 
-import argparse
-from pathlib import Path
-import multiprocessing as mp
-
-import numpy as np
 import pandas as pd
-from statsmodels.tsa.regime_switching.markov_regression import MarkovRegression
+import numpy as np
+from pathlib import Path
+from typing import Sequence
 
-try:
-    from tqdm import tqdm  # type: ignore
-    _tqdm = tqdm
-except ImportError:  # pragma: no cover
-    def _tqdm(x, **kwargs):
-        return x
-
-# --------------------------------------------------------------------------------------
-# core utils
-# --------------------------------------------------------------------------------------
-
-def load_dataset(csv_path: Path) -> pd.DataFrame:
-    """Load CSV with a required **date** column and post_count indicator.
-
-    The date column is parsed to pandas datetime and sorted ascending.
-    Missing rows (dates) are *not* filled.
-    """
-    df = pd.read_csv(csv_path, parse_dates=["date"])
-    if "date" not in df.columns:
-        raise ValueError("CSV must contain a 'date' column.")
-    if "post_count" not in df.columns:
-        raise ValueError("CSV must contain a 'post_count' column.")
-    df = df.sort_values("date").reset_index(drop=True)
-    return df
-
-
-def difference(series: pd.Series) -> pd.Series:
-    """Return first differences, dropping the initial NaN."""
-    return series.diff().dropna()
-
-
-def fit_switching_ar1(diff_series: pd.Series, n_init: int = 20, maxiter: int = 200):
-    """Fit a two-state AR(1) Markov-switching model.
-
-    Regime 1 (index 0): non-epidemic (Gaussian white noise)
-    Regime 2 (index 1): epidemic       (AR(1) process)
-
-    We use **statsmodels.tsa.regime_switching.MarkovRegression** with
-    heteroskedastic variances and regime-dependent AR coefficients.
-    Multiple random initialisations are tried; the fit with the highest
-    log-likelihood is kept (to mitigate local maxima, as in the paper).
-    """
-
-    best_llf = -np.inf
-    best_res = None
-
-    # Model definition outside loop for speed
-    # Create AR(1) model with 2 regimes - regime-specific intercepts, 
-    # AR coefficients, and variances
-    mod = MarkovRegression(
-        diff_series,
-        k_regimes=2,
-        order=1,
-        switching_trend=True,  # Allow different intercepts per regime
-        switching_exog=True,   # Allow different AR coefficients per regime
-        switching_variance=True,
-        trend="c",  # constant mean
-    )
-
-    start_params = mod.start_params
-
-    for _ in range(n_init):
-        # jitter initial params -> random restart
-        init = start_params + np.random.normal(scale=0.1, size=start_params.shape)
-        try:
-            res = mod.fit(
-                start_params=init,
-                maxiter=maxiter,
-                disp=False,
-            )
-        except (ValueError, np.linalg.LinAlgError):
-            continue  # failed fit, try another seed
-
-        if res.llf > best_llf:
-            best_llf = res.llf
-            best_res = res
-
-    if best_res is None:
-        raise RuntimeError("All EM initialisations failed – check your data.")
-
-    return best_res
-
-
-def epidemic_probability(res) -> pd.Series:
-    """Return smoothed probability P(state == epidemic) for every time-point."""
-    # By convention, regime index 1 is epidemic because its variance > variance(regime0)
-    prob_epidemic = res.smoothed_marginal_probabilities[1]
-    return prob_epidemic
-
-
-# --------------------------------------------------------------------------------------
-# moving-window driver
-# --------------------------------------------------------------------------------------
-
-def window_task(args):
-    """Helper for parallel pool: train HMM on one window, return last-point prob."""
-    (idx_start, window_values, n_init) = args
-    series = pd.Series(window_values)
-    res = fit_switching_ar1(series, n_init=n_init)
-    prob = epidemic_probability(res).iloc[-1]
-    return idx_start, prob
-
-
-def rolling_epidemic_probs(
-    diff_series: pd.Series,
+# ---------------------------------------------------------------------
+# User-facing entry point
+# ---------------------------------------------------------------------
+def compute_window_priors(
+    csv_path: Path | str,
+    feature_cols: Sequence[str] = ("post_count", "comment_count", "Volume"),
     window: int = 100,
     step: int = 1,
-    n_init: int = 20,
-    n_jobs: int = 1,
-) -> pd.Series:
-    """Compute epidemic probability for **last** point in each rolling window.
-
+) -> pd.DataFrame:
+    """
     Parameters
     ----------
-    diff_series : pd.Series
-        First-differenced time series.
-    window      : int
-        Window length (number of observations).
-    step        : int
-        How many observations to slide the window between fits.
-    n_init      : int
-        EM random restarts per window.
-    n_jobs      : int
-        Parallel workers (use >1 for speed).
+    csv_path      : path-like
+        CSV containing at least a 'date' column plus the columns listed
+        in `feature_cols`. Extra columns are ignored.
+    feature_cols  : list/tuple of str
+        Numeric columns to difference and feed to the HMM.  Add or
+        remove names here as needed.
+    window        : int
+        Length of the sliding block (default = 100 days).
+    step          : int
+        How far to slide the window each iteration (default = 1 day).
+
+    Returns
+    -------
+    priors_df     : pd.DataFrame
+        Index aligns to the last day of every window (i.e. the first
+        row corresponds to `window-1` in zero-based indexing).
+        Columns = ["a", "b"].
     """
-    if window < 10:
-        raise ValueError("Window too small – needs to be >= 10 points.")
+    # --------------------------------------------------------------
+    # 1. Read CSV and force a daily DateTimeIndex.
+    # --------------------------------------------------------------
+    df = (
+        pd.read_csv(csv_path, parse_dates=["date"])
+        .set_index("date")
+        .asfreq("D")               # pad gaps so diff() is day-to-day
+        .ffill()                   # simple forward-fill for holidays
+    )
 
-    # Build list of tasks: (start-idx, window-array, n_init)
-    tasks = []
-    values = diff_series.values
-    for start in range(0, len(values) - window + 1, step):
-        tasks.append((start, values[start : start + window], n_init))
+    # Keep only the columns we actually model.
+    z_raw = df[list(feature_cols)].copy()
 
-    probs = np.full(len(values), np.nan)
+    # --------------------------------------------------------------
+    # 2. First differences  z_t = x_t - x_{t-1}.
+    #    The first row after diff() is NaN and gets dropped.
+    # --------------------------------------------------------------
+    z = z_raw.diff().dropna()
 
-    if n_jobs == 1:
-        for t in _tqdm(tasks, desc="windows"):
-            idx, p = window_task(t)
-            probs[idx + window - 1] = p
-    else:
-        with mp.Pool(processes=n_jobs) as pool:
-            for idx, p in _tqdm(pool.imap_unordered(window_task, tasks), total=len(tasks)):
-                probs[idx + window - 1] = p
+    # --------------------------------------------------------------
+    # 3. Roll a fixed-length window through |z_t| to get max-diff.
+    #    Using pandas' rolling() with `step` implemented manually.
+    # --------------------------------------------------------------
+    abs_z = z.abs().to_numpy()                 # (T, M)  ndarray
+    time_index = z.index
 
-    return pd.Series(probs, index=diff_series.index)
+    a_list, b_list, t_end = [], [], []
+
+    for start in range(0, len(abs_z) - window + 1, step):
+        stop = start + window                  # slice end (exclusive)
+        block = abs_z[start:stop, :]           # window array (w, M)
+
+        b_w = block.max()                      # scalar max |Δ|
+        a_w = 0.1 * b_w                        # weak prior lower bound
+
+        a_list.append(a_w)
+        b_list.append(b_w)
+        t_end.append(time_index[stop - 1])     # last day in window
+
+    priors_df = pd.DataFrame(
+        {"a": a_list, "b": b_list},
+        index=pd.Index(t_end, name="window_end"),
+    )
+
+    return priors_df
 
 
-# --------------------------------------------------------------------------------------
-# CLI
-# --------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------
+# Demo / CLI
+# ---------------------------------------------------------------------
+if __name__ == "__main__":
+    import argparse
 
-def parse_args():
-    ap = argparse.ArgumentParser(description="Fit moving-window epidemic HMM on post_count.")
-    ap.add_argument("csv", type=Path, help="CSV file with date + post_count columns")
-    ap.add_argument("--window", type=int, default=100, help="Window size (default 100)")
-    ap.add_argument("--step", type=int, default=1, help="Window step (default 1)")
-    ap.add_argument("--n_init", type=int, default=20, help="Random restarts per window")
-    ap.add_argument("--n_jobs", type=int, default=1, help="Parallel workers")
-    ap.add_argument("--out", type=Path, required=True, help="Output CSV path")
-    return ap.parse_args()
+    ap = argparse.ArgumentParser(
+        description="Compute (a,b) variance-prior bounds on a rolling window."
+    )
+    ap.add_argument("csv", type=Path, help="Input CSV file")
+    ap.add_argument("--window", type=int, default=100, help="Window length")
+    ap.add_argument("--step", type=int, default=1, help="Step size")
+    ap.add_argument(
+        "--cols",
+        nargs="+",
+        default=["post_count", "comment_count", "Volume"],
+        help="Feature columns to difference",
+    )
+    ap.add_argument("--out", type=Path, required=True, help="Output CSV")
+    args = ap.parse_args()
 
-
-def main():
-    args = parse_args()
-
-    df = load_dataset(args.csv)
-
-    # Process only post_count
-    print(f"Processing post_count")
-    diff = difference(df["post_count"])
-    probs = rolling_epidemic_probs(
-        diff,
+    priors = compute_window_priors(
+        csv_path=args.csv,
+        feature_cols=args.cols,
         window=args.window,
         step=args.step,
-        n_init=args.n_init,
-        n_jobs=args.n_jobs,
     )
-    
-    # Create output dataframe with date and epidemic probability
-    output_df = pd.DataFrame({
-        "date": df["date"],
-        "post_count": df["post_count"],
-        "post_count_diff": pd.concat([pd.Series([np.nan]), diff]),  # Add NaN for first row
-        "prob_epidemic": probs
-    })
-    
-    output_df.to_csv(args.out, index=False)
-    print(f"Saved epidemic probabilities -> {args.out}")
-
-
-if __name__ == "__main__":
-    main()
+    priors.to_csv(args.out, index=True)
+    print(f"Saved {len(priors)} windows → {args.out}")
