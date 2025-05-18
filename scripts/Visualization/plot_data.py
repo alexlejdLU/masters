@@ -6,6 +6,10 @@ import glob
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
+#Run the script with:
+# streamlit run scripts/visualization/plot_data.py --server.port 8502
+
+
 # Page config
 st.set_page_config(page_title="Interactive Data Visualization", layout="wide")
 st.title("Interactive Data Visualization")
