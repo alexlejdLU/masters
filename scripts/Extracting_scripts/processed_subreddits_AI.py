@@ -1,34 +1,35 @@
-import os
-import json
-import time
+##This script was created to find all forums related to specific assets after cleaning up all of the subreddits - all 20M subreddits have been filtered down to 50000 prior to this
+## This was done by removing all nsfw and private subreddits, and removing all subreddits with less than 3000 comments and 1500 posts.
+# This script utilized the google genai api with the model flash 2.0 and a custom was created after some initial testing of results 
+
+import os, json, time
 from typing import List, Optional
 from pydantic import BaseModel
 from google import genai
 from google.genai import types
+from google.genai.errors import APIError, ServerError
 
 # --- Configuration ---
-INPUT_FILE = "subreddits_list/pre_processed_forums_AI.jsonl"
+INPUT_FILE  = "subreddits_list/pre_processed_forums_AI.jsonl"
 OUTPUT_FILE = "subreddits_list/asset_specific_subreddits.csv"
-BATCH_SIZE = 100  # Temporarily reduced for debugging
+BATCH_SIZE  = 100
 SLEEP_SECONDS = 1
 
 # --- Initialize the GenAI client ---
 def init_client():
-    api_key = "AIzaSyCK5ehdPfU_yV0juuYJNT2I_e67zkqGU5s"
-    if not api_key:
-        raise EnvironmentError("Set API key")
-    return genai.Client(api_key=api_key)
+    return genai.Client(api_key="putapikeyhere")
 
 # --- Schema Definition ---
 class SubredditResult(BaseModel):
     display_name_prefixed: str
-    is_asset_specific: bool
-    identified_asset: Optional[str]
-    confidence_score: float
+    is_asset_specific    : bool
+    identified_asset     : Optional[str]
+    confidence_score     : float
 
-# --- Helper Functions ---
+# --- Helper Functions (UNCHANGED) ------------------------------------------
 def build_prompt(subreddits: List[dict]) -> tuple:
     system_instruction = (
+        # ------------- entire system instruction text UNCHANGED -------------
         "You are an expert in identifying subreddits that are specifically and primarily dedicated to the discussion of a single financial asset.\n"
         "IMPORTANT: Financial assets are instruments that can be traded on a market.\n"
         "Examples of assets with subreddits include individual stocks (e.g., TSLA) or specific cryptocurrencies (e.g., Bitcoin). Exclude commodities such as (e.g., Gold).\n"
@@ -37,49 +38,53 @@ def build_prompt(subreddits: List[dict]) -> tuple:
         "Celebrity names, topics or general items do not constitute as financial assets or single-instrument-focused assets.\n"
         "\n"
         "EXPLICIT EXAMPLES:\n"
-        "- r/Bitcoin, true, Bitcoin, 0.95 (cryptocurrency)\n"
-        "- r/Madonna, false, null, 0.0 (celebrity)\n"
+        "- r/Bitcoin, true, Bitcoin, 1.0 (cryptocurrency)\n"
+        "- r/AgameofthronesLCG, false, null, 0.0 (entertainment/game)\n"
         "- r/Marijuana, false, null, 0.0 (recreational drug)\n"
-        "- r/MadnessCombat, false, null, 0.0 (entertainment/game)\n"
+        "- r/SNP, false, null, 0.0 (scottish national party)\n"
+        "- r/Superstonk, True, GME, 1.0 (stock)\n"
         "\n"
         "CRITERIA:\n"
         "Primary Asset Focus: The subreddit name, title, description or public description must clearly focus on one asset.\n"
         "EXCLUDE GENERICS: Broad-market or multi-asset communities (like stocks, crypto, investing).\n"
-        "Evaluate each subreddit independently. You will be given a list of 500 subreddits per batch with display_name_prefixed, title, description and public description. Evaluate each subreddit independently.\n"
+        "Evaluate each subreddit independently. You will be given a list of 100 subreddits per batch with display_name_prefixed, title, description and public description. Evaluate each subreddit independently.\n"
         "Asset Identification: If a subreddit is identified, attempt to extract the common name or ticker symbol of the specific asset (e.g., TSLA, Bitcoin, GME, XAU).\n"
         "Return exactly ONE output per subreddit that is strictly related to ONE financial asset. If the subreddit discusses multiple financial assets do not label this subreddit as true for identified asset.\n"
         "Return one schema/output per subreddit irregardless of results, e.g., if false - return false for is_asset_specific and null for identified_asset and confidence_score.\n"
         "INPUT: JSON array of objects with display_name_prefixed, title, description, public_description.\n"
         "OUTPUT: JSON array matching schema of SubredditResult (display_name_prefixed, is_asset_specific, identified_asset, confidence_score)."
     )
+    return system_instruction, json.dumps(subreddits, ensure_ascii=False)
 
-    user_content = json.dumps(subreddits, ensure_ascii=False)
-    return system_instruction, user_content
+# --- API Call WITH RETRY ONLY ----------------------------------------------
+def call_api(client, sys_instr: str, user_json: str,
+             retries: int = 5, backoff: float = 2.0) -> List[SubredditResult]:
+    for attempt in range(retries):
+        try:
+            resp = client.models.generate_content(
+                model="gemini-2.0-flash",
+                contents=[user_json],
+                config=types.GenerateContentConfig(
+                    system_instruction=sys_instr,
+                    max_output_tokens=8192,
+                    response_mime_type="application/json",
+                    response_schema={
+                        "type": "array",
+                        "items": SubredditResult.model_json_schema(),
+                    },
+                )
+            )
+            return resp.parsed or []
+        except (ServerError, APIError) as e:
+            if getattr(e, "status_code", 500) in (500, 502, 503, 504, 429):
+                wait = backoff * (2 ** attempt)
+                print(f"⚠️  {e.status_code} – retry {attempt+1}/{retries} in {wait}s")
+                time.sleep(wait)
+            else:
+                raise
+    raise RuntimeError("Exceeded retry limit")
 
-# --- API Call with explicit debugging ---
-def call_api(client, system_instruction: str, user_content: str) -> List[SubredditResult]:
-    response = client.models.generate_content(
-        model="gemini-2.0-flash",
-        contents=[user_content],
-        config=types.GenerateContentConfig(
-            system_instruction=system_instruction,
-            max_output_tokens=8192,
-            response_mime_type="application/json",
-            response_schema={
-                "type": "array",
-                "items": SubredditResult.model_json_schema(),
-            },
-        )
-    )
-
-    if not response.parsed:
-        print("❌ Gemini returned an empty parsed response. Raw response:")
-        print(response.text)
-        return []
-
-    return response.parsed
-
-# --- Main Processing ---
+# --- Main Processing (UNCHANGED EXCEPT FOR CALL) ---------------------------
 def main():
     client = init_client()
 
@@ -98,25 +103,23 @@ def main():
         for _ in range(processed):
             next(infile, None)
 
-        batch = []
-        total_processed = processed
-        batch_count = 0
+        batch, total, batch_no = [], processed, 0
 
         for line in infile:
-            total_processed += 1
+            total += 1
             data = json.loads(line)
             batch.append({
                 'display_name_prefixed': data.get('display_name_prefixed'),
-                'title': data.get('title'),
-                'description': data.get('description'),
-                'public_description': data.get('public_description')
+                'title'               : data.get('title'),
+                'description'         : data.get('description'),
+                'public_description'  : data.get('public_description')
             })
 
             if len(batch) >= BATCH_SIZE:
-                batch_count += 1
-                print(f"Batch {batch_count}: processing {len(batch)} entries")
-                system_instruction, user_content = build_prompt(batch)
-                results = call_api(client, system_instruction, user_content)
+                batch_no += 1
+                print(f"Batch {batch_no}: processing {BATCH_SIZE} entries")
+                sys_i, user_j = build_prompt(batch)
+                results = call_api(client, sys_i, user_j)
 
                 if not results:
                     print("❌ No results returned for this batch.")
@@ -131,15 +134,13 @@ def main():
                     print(f"✅ Successfully processed {len(results)} entries.")
 
                 batch = []
-                break  # Only first batch for testing
                 time.sleep(SLEEP_SECONDS)
 
-        # Final partial batch (if any)
         if batch:
-            batch_count += 1
-            print(f"Final batch {batch_count}: processing {len(batch)} entries")
-            system_instruction, user_content = build_prompt(batch)
-            results = call_api(client, system_instruction, user_content)
+            batch_no += 1
+            print(f"Final batch {batch_no}: processing {len(batch)} entries")
+            sys_i, user_j = build_prompt(batch)
+            results = call_api(client, sys_i, user_j)
 
             if not results:
                 print("❌ No results returned for final batch.")
@@ -153,7 +154,7 @@ def main():
                     )
                 print(f"✅ Successfully processed final {len(results)} entries.")
 
-    print(f"Done: Processed {total_processed} lines in {batch_count} batches.")
+    print(f"Done: Processed {total} lines in {batch_no} batches.")
 
 if __name__ == '__main__':
     main()
