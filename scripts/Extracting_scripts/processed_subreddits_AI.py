@@ -1,6 +1,6 @@
 ##This script was created to find all forums related to specific assets after cleaning up all of the subreddits - all 20M subreddits have been filtered down to 50000 prior to this
-## This was done by removing all nsfw and private subreddits, and removing all subreddits with less than 3000 comments and 1500 posts.
-# This script utilized the google genai api with the model flash 2.0 and a custom was created after some initial testing of results 
+##This was done by removing all nsfw and private subreddits, and removing all subreddits with less than 3000 comments and 1500 posts.
+##This script utilized the google genai api with the model flash 2.0 and a custom was created after some initial testing of results 
 
 import os, json, time
 from typing import List, Optional

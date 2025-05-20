@@ -27,9 +27,7 @@ if __name__ == "__main__":
 
 #############Appending the subreddits posts and comments to the existing data########################
 
-import pandas as pd
 import json
-import os
 
 # Input files
 true_subreddits_file = 'subreddits_list/true_asset_specific_subreddits.csv'

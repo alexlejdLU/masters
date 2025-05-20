@@ -1,0 +1,392 @@
+identified_asset,true_name,asset_type,total_posts,total_comments,subreddits
+GME,GameStop Corp.,Stock,1498035,36626395.0,r/DDintoGME, r/DeepFuckingValue, r/DRSyourGME, r/Gamestopstock, r/GME, r/gme_capitalists, r/GME_Mexico, r/GMECanada, r/GMEmate, r/GMEOrphans, r/Spielstopp, r/Superstonk, r/superstonkuk
+BTC,Bitcoin,Crypto,2047188,26022977.0,r/Bitcoin, r/bitcoin_uncensored, r/BitcoinAUS, r/BitcoinBeginners, r/BitcoinBrasil, r/BitcoinCA, r/BitcoinDE, r/BitcoinDiscussion, r/BitcoinDK, r/BitcoinGambling, r/BitcoinIndia, r/BitcoinMarkets, r/BitcoinMining, r/BitcoinNL, r/BitcoinNO, r/bitcointaxes, r/bitcointrading, r/BitcoinUK, r/BitcoinWallet, r/btc, r/GirlsGoneBitcoin, r/InBitcoinWeTrust, r/NZBitcoin
+DOGE,Dogecoin,Crypto,1519160,13505842.0,r/doge, r/dogecoin, r/dogecoinbeg, r/dogecoindev, r/dogeducation, r/dogemarket, r/DogeMiner, r/dogemining, r/dogeservice
+ETH,Ethereum,Crypto,935260,13373081.0,r/eth, r/eth_liquidity_scam, r/ethdev, r/ethereum, r/ethereumnoobies, r/EtherMining, r/etherscan, r/ethfinance, r/EthGamers, r/ethinvestor, r/ethstaker, r/ethtrader
+AMC,AMC Entertainment Holdings Inc.,Stock,701556,13350330.0,r/AMCEntertainmentStock, r/amcforDRS, r/amcstock, r/AMCSTOCKS, r/amczone
+TSLA,Tesla Inc.,Stock,87048,4420424.0,r/RealTesla, r/teslainvestorsclub, r/TSLA, r/TSLALounge
+SHIB,Shiba Inu,Crypto,415559,3865885.0,r/shib, r/SHIBADULTS, r/Shibainucoin, r/ShibaInuCrypto, r/SHIBArmy, r/Shibu_Inu
+SFM,SafeMoon (V2),Crypto,289664,3689266.0,r/SafeMoon, r/SafeMoonInvesting
+XRP,XRP,Crypto,192761,1771536.0,r/Ripple, r/RippleTalk, r/XRP
+LTC,Litecoin,Crypto,140963,1630741.0,r/litecoin, r/LitecoinMarkets, r/litecoinmining, r/ltc
+XMR,Monero,Crypto,143194,1572848.0,r/Monero, r/MoneroMining, r/monerosupport, r/moonero, r/xmrtrader
+ADA,Cardano,Crypto,159004,1480083.0,r/cardano, r/CardanoDevelopers, r/CardanoMarkets, r/CardanoNFTs, r/CardanoStakePools, r/CardanoTrading
+LRC,Loopring,Crypto,80796,1406770.0,r/loopring, r/loopringartists, r/loopringorg
+SOL,Solana,Crypto,172572,1299467.0,r/solana, r/SolanaMemeCoins, r/SolanaNFT, r/SolCoins
+ALGO,Algorand,Crypto,73880,1111819.0,r/algorand, r/algorandASA, r/AlgorandOfficial
+XNO,Nano,Crypto,65861,1013251.0,r/nanocurrency, r/nanotrade
+MVIS,MicroVision Inc.,Stock,27514,1008185.0,r/MVIS
+CLOV,Clover Health Investments Corp.,Stock,51190,925878.0,r/CLOV
+VET,VeChain,Crypto,41923,906343.0,r/Vechain
+BAN,Banano,Crypto,43562,817878.0,r/banano
+AMD,Advanced Micro Devices Inc.,Stock,33060,785378.0,r/AMD_Stock, r/realAMD
+CANNACOIN,Stellar Cannacoin,Crypto,24253,751918.0,r/StellarCannaCoin
+IOTA,IOTA,Crypto,104284,670871.0,r/Iota, r/IOTAFaucet, r/IOTAmarkets
+FFIE,Faraday Future Intelligent Electric Inc.,Stock,106574,634626.0,r/FFIE, r/FFIEplanB
+HNT,Helium,Crypto,61946,616568.0,r/HeliumNetwork
+SNDL,SNDL Inc.,Stock,35532,549233.0,r/SNDL, r/SNDL_Stock
+PLTR,Palantir Technologies Inc.,Stock,23552,538395.0,r/palantir, r/PLTR
+XLM,Stellar,Crypto,54680,517907.0,r/Stellar, r/xlm
+BBIG,Vinco Ventures Inc.,Stock,36638,495257.0,r/BBIG
+NEO,NEO,Crypto,62805,480882.0,r/NEO, r/Neotrader
+GRLC,Garlicoin,Crypto,37669,439746.0,r/GarlicMarket, r/garlicoin
+AMP,Amp,Crypto,33581,435642.0,r/AMPToken
+DJT,Trump Media & Technology Group Corp.,Stock,40431,429427.0,r/DJT_Uncensored, r/DJTSTOCK, r/DWAC_Research, r/DWAC_Stock
+AXS,Axie Infinity,Crypto,116474,419831.0,r/AxieInfinity, r/AxieScholarships
+SOFI,SoFi Technologies Inc.,Stock,8438,417545.0,r/sofistock
+XCH,Chia Network,Crypto,33541,406101.0,r/chia
+ATOM,Cosmos,Crypto,33692,346306.0,r/CosmosAirdrops, r/cosmosnetwork
+NVDA,NVIDIA Corporation,Stock,15325,342632.0,r/NVDA_Stock, r/NvidiaStock
+HBAR,Hedera,Crypto,26434,338629.0,r/Hedera
+EOS,EOS,Crypto,58821,338461.0,r/eos
+MMAT,Meta Materials Inc.,Stock,18371,314742.0,r/MMAT
+SAITAMA,Saitama,Crypto,27213,314725.0,r/SaitamaInu_Official
+ELON,Dogelon Mars,Crypto,32488,303620.0,r/dogelon
+PEPE,Pepe,Crypto,32196,294942.0,r/pepecoin, r/Pepecryptocurrency
+BSV,Bitcoin SV,Crypto,46408,291979.0,r/bitcoincashSV, r/bsv
+VTC,Vertcoin,Crypto,33253,289637.0,r/vertcoin, r/VertcoinMining
+XTZ,Tezos,Crypto,40359,280342.0,r/tezos, r/tezostrader
+ONE,Harmony,Crypto,24019,267284.0,r/harmony_one
+GODS,Gods Unchained,Crypto,25018,266587.0,r/GodsUnchained
+BAT,Basic Attention Token,Crypto,35327,265982.0,r/BATProject
+CRO,Cronos (Crypto.com Coin),Crypto,20235,243952.0,r/cro
+TLRY,Tilray Brands Inc.,Stock,19346,235778.0,r/tilray, r/TLRY
+MNMD,Mind Medicine (MindMed) Inc.,Stock,11001,233224.0,r/MindMedInvestorsClub
+SRNE,Sorrento Therapeutics Inc.,Stock,19784,223460.0,r/BANDOFBROTHERSOFSRNE, r/srne
+OMI,ECOMI,Crypto,29980,222354.0,r/VeVeCollectables
+RVN,Ravencoin,Crypto,20994,221640.0,r/Ravencoin
+RDD,ReddCoin,Crypto,22586,216219.0,r/reddCoin
+SPCE,Virgin Galactic Holdings Inc.,Stock,16465,212411.0,r/SPCE, r/VirginGalactic
+HOGE,Hoge Finance,Crypto,29728,208121.0,r/hoge
+BB,BlackBerry Limited,Stock,14970,206655.0,r/BB_Stock
+WKHS,Workhorse Group Inc.,Stock,18880,203143.0,r/WKHS
+MULN,Mullen Automotive Inc.,Stock,13152,196367.0,r/Muln
+BabyDoge,Baby Doge Coin,Crypto,35008,189836.0,r/BABYDOGEARMY, r/BabyDogeCoin, r/BabyDogeOfficial
+ETC,Ethereum Classic,Crypto,34400,188794.0,r/EthereumClassic
+BNGO,Bionano Genomics Inc.,Stock,3882,185999.0,r/BNGO
+BCH,Bitcoin Cash,Crypto,53219,184898.0,r/Bitcoincash
+JASMY,JasmyCoin,Crypto,17512,184656.0,r/JasmyToken
+MSTR,MicroStrategy Incorporated,Stock,9299,182110.0,r/MSTR
+ASTS,AST SpaceMobile Inc.,Stock,5741,175807.0,r/ASTSpaceMobile
+RKT,Rocket Companies Inc.,Stock,7109,167920.0,r/TeamRKT
+BABA,Alibaba Group Holding Limited,Stock,13166,167364.0,r/AlibabaStock, r/baba
+OCGN,Ocugen Inc.,Stock,13471,166736.0,r/Ocugen
+ELONGATE,ElonGate,Crypto,18523,161614.0,r/ElonGateToken
+HEX,HEX,Crypto,18076,157957.0,r/HEXcrypto
+VGX,Voyager Token,Crypto,13467,153730.0,r/Invest_Voyager
+ICX,ICON,Crypto,20151,151390.0,r/helloicon, r/icon
+EGC,EverGrow Coin,Crypto,13369,148988.0,r/evergrowcoin
+DASH,Dash,Crypto,34098,144474.0,r/dashpay
+RKLB,Rocket Lab USA Inc.,Stock,7314,144268.0,r/RKLB
+HCMC,Healthier Choices Management Corp.,Stock,12922,143910.0,r/HCMC, r/HCMCSTOCK
+SLOTH,Slothana,Crypto,24357,142844.0,r/Slothana, r/SlothanaOfficial
+THETA,Theta Network,Crypto,15452,142598.0,r/theta_network
+ERG,Ergo,Crypto,15405,140805.0,r/erg_miners, r/ergonauts
+SOS,SOS Limited,Stock,14197,140455.0,r/SOSLimited, r/SOSStock
+PANW,Palo Alto Networks Inc.,Stock,17406,140062.0,r/paloaltonetworks
+SC,Siacoin,Crypto,18621,137043.0,r/siacoin, r/siatrader
+CEI,Camber Energy Inc.,Stock,9309,135729.0,r/CEI_stock
+CTRM,Castor Maritime Inc.,Stock,7532,135254.0,r/CTRM
+KAS,Kaspa,Crypto,9132,135044.0,r/kaspa
+MATIC,Polygon,Crypto,17820,132039.0,r/PolygonMoonShots, r/polygonnetwork
+ATER,Aterian Inc.,Stock,8836,130202.0,r/ATERstock
+DOT,Polkadot,Crypto,26831,126487.0,r/Polkadot, r/polkadot_market
+ETN,Electroneum,Crypto,16671,126364.0,r/Electroneum
+BTT,BitTorrent,Crypto,16506,124984.0,r/BittorrentToken, r/BTTCOINCOMMUNITY
+EXRO,Exro Technologies Inc.,Stock,2203,122890.0,r/ExroTechnologies
+LINK,Chainlink,Crypto,26925,120324.0,r/Chainlink, r/LINKTrader
+ATHX,Athersys Inc.,Stock,9818,118526.0,r/ATHX
+DGB,DigiByte,Crypto,20011,114927.0,r/Digibyte
+FTM,Fantom,Crypto,14492,112901.0,r/FantomFoundation
+LSK,Lisk,Crypto,16576,112195.0,r/Lisk
+INO,Inovio Pharmaceuticals Inc.,Stock,11756,112028.0,r/Inovio
+GOEV,Canoo Inc.,Stock,8405,111838.0,r/canoo, r/goev
+AVAX,Avalanche,Crypto,29511,108013.0,r/Avax
+GONE,Polygon Hooligans (GONE),Crypto,6625,103204.0,r/polyGONE
+ZIL,Zilliqa,Crypto,16999,102974.0,r/zilliqa
+LCID,Lucid Group Inc.,Stock,9199,100549.0,r/LCID, r/LUCID, r/lucidmotors
+TACO,TacoCat Token,Crypto,7608,99997.0,r/TacoPlanet, r/TacoToken
+RVVTF,Revive Therapeutics Ltd.,Stock,2734,99791.0,r/RVVTF
+UWMC,UWM Holdings Corporation,Stock,4330,94465.0,r/UWMCShareholders
+FEG,FEG Token,Crypto,10839,91227.0,r/FEGtoken, r/FegToken_Official
+SLGG,Super League Gaming Inc.,Stock,2200,91064.0,r/slgg
+ARK,ARK Ecosystem,Crypto,11554,85321.0,r/ArkEcosystem
+YLDY,Yieldly,Crypto,9506,84963.0,r/yieldly
+KISHU,Kishu Inu,Crypto,13082,82990.0,r/KishuInu
+CLNE,Clean Energy Fuels Corp.,Stock,3837,82764.0,r/CLNE
+XYO,XYO Network,Crypto,11177,82724.0,r/XYONetwork
+ZOM,Zomedica Corp.,Stock,5616,79574.0,r/Zomedica
+NOK,Nokia Oyj,Stock,13101,73228.0,r/Nok, r/Nokia_stock
+QYLD,Global X NASDAQ 100 Covered Call ETF,Stock,4479,73024.0,r/qyldgang
+MAYO,MayoCoin,Crypto,4456,71877.0,r/mayocoin
+CYDY,CytoDyn Inc.,Stock,7436,71583.0,r/CYDY
+RYCEY,Rolls-Royce Holdings plc,Stock,9711,71302.0,r/RYCEY
+DOBO,DogeBonk,Crypto,11419,69877.0,r/DogeBONK
+BTCP,Bitcoin Private,Crypto,22603,67837.0,r/BitcoinPrivate, r/BTC_Private
+TLSS,T Stamp Inc.,Stock,2614,67540.0,r/tlss
+ACH,Alchemy Pay,Crypto,5782,67481.0,r/AlchemyPay
+KENDU,Kendu Inu,Crypto,6015,66803.0,r/KenduInu_Ecosystem
+ICP,Internet Computer,Crypto,6366,66194.0,r/ICPTrader
+WISH,ContextLogic Inc. (Wish),Stock,8291,64415.0,r/Wishstock
+AKTA,Akita Inu ASA,Crypto,4663,63937.0,r/AkitaInuASA
+MKR,Maker,Crypto,13574,62791.0,r/MakerDAO
+ENJ,Enjin Coin,Crypto,11248,61524.0,r/EnjinCoin
+PICKLE,Pickle Finance,Crypto,4067,60860.0,r/PickleFinancial
+HUT,Hut 8 Corp,Stock,3726,59671.0,r/hut8
+NFTART,NFTArt.Finance,Crypto,18458,59428.0,r/NFTArt_Finance
+CATGIRL,Catgirl,Crypto,7216,57363.0,r/catgirlcoin
+CTXR,Citius Pharmaceuticals Inc.,Stock,2394,54733.0,r/CTXR
+XEQT,iShares Core Equity ETF Portfolio,Stock,2285,53778.0,r/JustBuyXEQT
+LUNC,Terra Classic,Crypto,6525,52843.0,r/LunaClassic
+SMCI,Super Micro Computer Inc.,Stock,3707,52568.0,r/SMCIDiscussion
+KDA,Kadena,Crypto,6528,51104.0,r/kadena
+ALPP,Alpine 4 Holdings Inc.,Stock,2930,50777.0,r/ALPP
+BLK,BlackCoin,Crypto,6910,50602.0,r/blackcoin
+ZEC,Zcash,Crypto,11630,48764.0,r/zec
+NLST,Netlist Inc.,Stock,6961,48498.0,r/Netlist_, r/NLST
+VRA,Verasity,Crypto,6318,47351.0,r/Verasity
+ATOS,Atossa Therapeutics Inc.,Stock,2522,47008.0,r/AtossaTherapeutics
+GLM,Golem Network,Crypto,9137,46846.0,r/GolemProject, r/GolemTrader
+QS,QuantumScape Corporation,Stock,3313,46359.0,r/QUANTUMSCAPE_Stock
+GRT,The Graph,Crypto,6564,46130.0,r/GRTTrader, r/thegraph
+SUI,Sui,Crypto,4811,43703.0,r/sui
+SENS,Senseonics Holdings Inc.,Stock,2949,43531.0,r/senseonics
+RBIF,Robo Inu Finance,Crypto,4596,42525.0,r/roboinu
+RISE,EverRise,Crypto,6429,42284.0,r/EverRise
+GRC,GridCoin,Crypto,7685,42155.0,r/gridcoin
+NAV,NavCoin,Crypto,6998,41447.0,r/NavCoin
+HERO,Metahero,Crypto,4519,40539.0,r/metahero
+XMY,Myriad,Crypto,4367,40175.0,r/myriadcoin
+DENT,DENT Wireless,Crypto,5087,39593.0,r/dentcoin
+XELA,Exela Technologies Inc.,Stock,3693,39580.0,r/Xelastock
+HITI,High Tide Inc.,Stock,2810,38432.0,r/HighTideInc
+RECO,Reconnaissance Energy Africa Ltd.,Stock,2347,38403.0,r/ReconAfrica
+MMNFF,MedMen Enterprises Inc.,Stock,4734,38140.0,r/mmnff
+FLR,Flare Network,Crypto,4720,37500.0,r/FlareNetworks
+HYMC,Hycroft Mining Holding Corporation,Stock,5828,37277.0,r/HYMCStock
+POT,PotCoin,Crypto,6574,36864.0,r/potcoin
+ONT,Ontology,Crypto,10028,36622.0,r/OntologyNetwork
+FLOKI,FLOKI,Crypto,9021,35970.0,r/Floki
+TOSHI,Toshi,Crypto,5894,35669.0,r/toshicoin
+CAW,A Hunters Dream (CrowWithKnife),Crypto,3672,35220.0,r/crowwithknife
+NKLA,Nikola Corporation,Stock,2586,35165.0,r/RealNikola
+FRM,Ferrum Network,Crypto,5515,34593.0,r/FRM
+AITX,Artificial Intelligence Technology Solutions Inc.,Stock,3244,34471.0,r/AITX
+IOTX,IoTeX,Crypto,7779,34362.0,r/IoTeX
+PHUN,Phunware Inc.,Stock,4467,34326.0,r/Phunware
+APE,ApeCoin,Crypto,5257,34251.0,r/apecoins
+BYDDY,BYD Company Limited,Stock,3718,33973.0,r/BYD
+CHZ,Chiliz,Crypto,5703,33880.0,r/chiliZ
+XEM,NEM,Crypto,11536,33752.0,r/nem
+LAZR,Luminar Technologies Inc.,Stock,3312,33441.0,r/lazr
+DCR,Decred,Crypto,7457,32838.0,r/decred
+SPELL,Spell Token,Crypto,4822,32740.0,r/SpellToken
+TNXP,Tonix Pharmaceuticals Holding Corp.,Stock,3177,32706.0,r/TNXP
+LIC,Lama Inu Coin,Crypto,2605,32503.0,r/Lamainucoin
+NIO,NIO Inc.,Stock,2682,32389.0,r/NIO_Stock
+SAVA,Cassava Sciences Inc.,Stock,2807,32264.0,r/SAVA_stock
+EMAX,EthereumMax,Crypto,4062,32179.0,r/EthereumMax
+TRUMPCOIN,Official Trump Coin,Crypto,3837,31977.0,r/OfficialTrumpCoin
+FET,Fetch.ai,Crypto,5453,31307.0,r/FetchAI_Community
+NVAX,Novavax Inc.,Stock,2907,30656.0,r/NVAX
+RILY,B. Riley Financial Inc.,Stock,1771,29288.0,r/RILYStock
+PLUG,Plug Power Inc.,Stock,6655,28752.0,r/PLUGgreenhydrogen, r/plugpowerstock
+ANANOS,Ananos,Crypto,1931,28655.0,r/ananos
+XCN,Chain,Crypto,3065,28516.0,r/XCN
+LBC,LBRY Credits,Crypto,5981,28473.0,r/lbry
+VFS,VinFast Auto Ltd.,Stock,2215,28007.0,r/VinFastComm
+KSM,Kusama,Crypto,6993,27928.0,r/Kusama
+IMX,Immutable X,Crypto,4444,27724.0,r/ImmutableX
+RIVN,Rivian Automotive Inc.,Stock,1526,27320.0,r/RIVNstock
+STORJ,Storj,Crypto,6040,27062.0,r/storj
+FIL,Filecoin,Crypto,5725,26830.0,r/filecoin
+AABB,Asia Broadband Inc.,Stock,2876,26782.0,r/aabbstock
+CUMMIES,CumRocket,Crypto,4248,26592.0,r/CumRocket
+ACB,Aurora Cannabis Inc.,Stock,6555,26227.0,r/auroracannabis
+MINA,Mina Protocol,Crypto,5161,26154.0,r/MinaProtocol
+XPR,Proton,Crypto,4003,25888.0,r/ProtonChain
+MVST,Microvast Holdings Inc.,Stock,2108,25772.0,r/Microvast
+AMRS,Amyris Inc.,Stock,3170,25413.0,r/Amyris
+LADYS,Milady Meme Coin,Crypto,7105,25406.0,r/MiLadymemecoin
+GSAT,Globalstar Inc.,Stock,1877,25055.0,r/GSAT
+PIVX,PIVX,Crypto,5729,24675.0,r/pivx
+OZSC,Ozop Energy Solutions Inc.,Stock,2223,24670.0,r/OZSC
+HODL,HODL Token,Crypto,4585,24544.0,r/HodlToken
+RTM,Raptoreum,Crypto,3662,24538.0,r/raptoreum
+BNB,Binance Coin (BNB Chain),Crypto,2511,24298.0,r/BNBinance
+REEF,Reef,Crypto,4968,24139.0,r/ReefDeFi
+QTUM,Qtum,Crypto,7880,24047.0,r/Qtum
+NEAR,NEAR Protocol,Crypto,8755,23994.0,r/nearprotocol
+GREE,Greenidge Generation Holdings Inc.,Stock,2404,23654.0,r/gree
+ARRR,Pirate Chain,Crypto,3631,23590.0,r/PirateChain
+TCG2,TCG Coin 2.0,Crypto,3761,23336.0,r/TcgCoin
+KOSS,Koss Corporation,Stock,3131,23180.0,r/KOSSstock
+GWAV,Greenwave Technology Solutions Inc.,Stock,4486,23078.0,r/GWAV
+GMR,GMR Center,Crypto,3681,22975.0,r/GMR_Finance
+ACHR,Archer Aviation Inc.,Stock,2227,22910.0,r/ACHR
+NNDM,Nano Dimension Ltd.,Stock,2305,22854.0,r/NNDM
+JUNO,Juno Network,Crypto,2651,22578.0,r/JunoNetwork
+PPC,Peercoin,Crypto,5383,22535.0,r/peercoin
+SKILL,CryptoBlades,Crypto,3590,22422.0,r/CryptoBlades
+ZRX,0x Protocol,Crypto,3085,22317.0,r/zrxtrader
+STRAX,Stratis (now StratisEVM),Crypto,6060,22308.0,r/stratisplatform
+STX,Stacks,Crypto,4710,22302.0,r/stacks
+XRD,Radix,Crypto,4693,21979.0,r/Radix
+RPL,Rocket Pool,Crypto,2737,21974.0,r/rocketpool
+DISH,DISH Network Corporation,Stock,3702,21755.0,r/dishnetwork
+TRAC,OriginTrail,Crypto,4968,21717.0,r/OriginTrail
+XLY,Auxly Cannabis Group Inc.,Stock,2591,21534.0,r/auxlycannabis
+DOGET,The Real Doge Token,Crypto,3839,21477.0,r/TheRealDogeToken
+TTOO,T2 Biosystems Inc.,Stock,1951,21138.0,r/TTOOstock
+ARVL,Arrival,Stock,1951,20393.0,r/ARVL
+AQUAGOAT,AquaGoat,Crypto,2992,20311.0,r/AquaGoatFinance
+ARDR,Ardor,Crypto,6738,19993.0,r/Ardor
+AGIX,SingularityNET,Crypto,4821,19927.0,r/SingularityNet
+SAND,The Sandbox,Crypto,5784,19809.0,r/TheSandboxGaming
+ENPH,Enphase Energy Inc.,Stock,1723,19371.0,r/enphase
+ARBK,Argo Blockchain PLC,Stock,1920,19362.0,r/ArgoBlockchain
+BNT,Bancor Network,Crypto,7986,19064.0,r/Bancor
+NEBL,Neblio,Crypto,3760,18949.0,r/Neblio
+GALA,Gala Games,Crypto,3672,18898.0,r/GalaGames
+NODL,Nodle,Crypto,2444,18830.0,r/Nodle
+TRIP,Red Light Holland Corp.,Stock,2429,18747.0,r/RedLightHollandTRIP
+RIOT,Riot Platforms Inc.,Stock,2355,18731.0,r/RiotBlockchain
+SAT,Saturna,Crypto,2931,18568.0,r/SaturnaToken
+STMX,StormX,Crypto,2464,17959.0,r/STMX
+WAXP,WAX,Crypto,5407,17431.0,r/WAX_io
+GRS,Groestlcoin,Crypto,4140,17328.0,r/groestlcoin
+RUNE,THORChain,Crypto,3532,17263.0,r/THORChain
+LEASH,Doge Killer (LEASH),Crypto,2413,17129.0,r/LEASHarmy
+FUBO,fuboTV Inc.,Stock,1924,17099.0,r/fuboinvestors
+POWR,Power Ledger,Crypto,4051,17091.0,r/PowerLedger
+PSNY,Polestar Automotive Holding UK PLC,Stock,2222,16948.0,r/PSNY_Polestar_SPAC
+DRIP,DRIP Network,Crypto,2149,16828.0,r/dripnetwork
+LWLG,Lightwave Logic Inc.,Stock,1706,16773.0,r/LWLG
+WIF,dogwifhat,Crypto,2068,16745.0,r/dogwifhat
+SYS,Syscoin,Crypto,4715,16727.0,r/SysCoin
+OGN,Origin Protocol,Crypto,2977,16721.0,r/originprotocol
+SAMO,Samoyedcoin,Crypto,2822,16718.0,r/SamoyedCoin
+MOG,Mog Coin,Crypto,3136,16657.0,r/mogcoin
+KMD,Komodo,Crypto,6689,16493.0,r/komodoplatform
+PSFE,Paysafe Limited,Stock,2391,16492.0,r/PSFE
+ZIM,ZIM Integrated Shipping Services Ltd.,Stock,3654,16240.0,r/zim
+DOGEVERSE,DogeVerse,Crypto,2149,16196.0,r/DogeVerse
+DKNG,DraftKings Inc.,Stock,2803,16124.0,r/DKNG
+XDC,XDC Network,Crypto,4194,15893.0,r/xinfin
+BEPRO,Bepro Network,Crypto,2059,15781.0,r/BEPRO
+CENN,Cenntro Electric Group Limited,Stock,3372,15513.0,r/CENN
+KUMA,Kuma Inu,Crypto,2541,15511.0,r/KumaInu
+PEPU,Pepu Coin,Crypto,1924,15461.0,r/pepu
+BTS,BitShares,Crypto,6815,15115.0,r/BitShares
+LeronLimab (Unknown),LeronLimab (Unknown),Unknown,1770,15052.0,r/LeronLimab_Times
+CELO,Celo,Crypto,3188,14948.0,r/celo
+POODL,Poodle Token,Crypto,3211,14938.0,r/POODLTOKEN
+LUNA / LUNC,Terra (Luna) / Terra Classic (Luna Classic),Crypto,3083,14438.0,r/Terra_Luna_crypto
+BONK,Bonk,Crypto,2364,14182.0,r/BONKcoin
+OKTA,Okta Inc.,Stock,2383,14149.0,r/okta
+NUMI,Numinus Wellness Inc.,Stock,1573,14111.0,r/NuminusInvestorsClub
+CTSI,Cartesi,Crypto,3426,13908.0,r/cartesi
+HOT,Holo,Crypto,1548,13896.0,r/HoloTrader
+BONE,Bone ShibaSwap,Crypto,1621,13876.0,r/BONETOKENS
+POOCOIN,PooCoin,Crypto,4398,13856.0,r/PooCoin
+CYBN,Cybin Inc.,Stock,2447,13673.0,r/CybinInvestorsClub
+MINT,MintCoin,Crypto,2966,13335.0,r/MintCoin
+AAPL,Apple Inc.,Stock,1626,13227.0,r/AAPL
+MOON,MoonCoin,Crypto,2934,13211.0,r/MoonCoin
+NIM,Nimiq,Crypto,2967,12837.0,r/Nimiq
+CINE,Cineworld Group PLC,Stock,1536,12735.0,r/Cineworldstock
+BRK.A,Berkshire Hathaway Inc.,Stock,3001,12670.0,r/BerkshireHathaway
+BLSP,Blue Sphere Corporation,Stock,1867,12662.0,r/BLSP
+VXRT,Vaxart Inc.,Stock,2633,12573.0,r/VXRT
+INND,InnerScope Hearing Technologies Inc.,Stock,1551,12525.0,r/INND
+YFI,yearn.finance,Crypto,3867,12498.0,r/yearn_finance
+WMT,World Mobile Token,Crypto,2088,12405.0,r/WorldMobileToken
+EVMOS,Evmos,Crypto,1937,12065.0,r/EVMOS
+ARB,Arbitrum,Crypto,5389,11956.0,r/Arbitrum
+SUSHI,SushiSwap,Crypto,3689,11956.0,r/SushiSwap
+SNX,Synthetix,Crypto,2955,11743.0,r/synthetix_io
+WLD,Worldcoin,Crypto,2528,11690.0,r/worldcoin
+SCRT,Secret Network,Crypto,3746,11529.0,r/SecretNetwork
+XEC,eCash,Crypto,3581,11436.0,r/ecash
+NULS,NULS,Crypto,3499,11416.0,r/nulsservice
+AION,Aion Network,Crypto,3796,11259.0,r/AionNetwork
+TKING,Tiger King Coin,Crypto,1874,11116.0,r/TigerKingCoin
+CVC,Civic,Crypto,3355,11066.0,r/civicplatform
+SANSHU,Sanshu Inu,Crypto,1729,11036.0,r/SanshuArmy
+VTHO,VeThor Token,Crypto,1639,10733.0,r/VTHOTrading
+CRPT,Choise.com (formerly Crypterium),Crypto,6157,10338.0,r/Crypterium, r/crypterium_com
+CSPR,Casper Network,Crypto,1857,10149.0,r/CasperCSPR
+NMC,Namecoin,Crypto,3089,10110.0,r/Namecoin
+XPEV,XPeng Inc.,Stock,2653,10096.0,r/Xpeng
+NRG,Energi,Crypto,3502,10068.0,r/energicryptocurrency
+BTX,Bitcore,Crypto,1609,9993.0,r/bitcore_btx
+KIN,Kin,Crypto,1788,9926.0,r/kin
+RDN,Raiden Network Token,Crypto,2549,9870.0,r/raidennetwork
+HEXO,HEXO Corp.,Stock,1859,9843.0,r/HEXO_Corp
+USDC,USD Coin,Crypto,2947,9838.0,r/USDC
+RBLX,Roblox Corporation,Stock,1510,9799.0,r/RBLX
+SXP,Solar (formerly Swipe),Crypto,1555,9741.0,r/swipecrypto
+VRC,VeriCoin,Crypto,2618,9719.0,r/vericoin
+IOST,IOST,Crypto,5896,9621.0,r/IOStoken
+COTI,COTI,Crypto,2952,9521.0,r/cotinetwork
+INJ,Injective Protocol,Crypto,4717,9497.0,r/injective
+AE,Aeternity,Crypto,4488,9482.0,r/Aeternity
+MRNA,Moderna Inc.,Stock,1890,9390.0,r/ModernaStock
+LDO,Lido DAO Token,Crypto,2922,9386.0,r/LidoFinance
+LQMT,Liquidmetal Technologies Inc.,Stock,1795,9365.0,r/LQMT
+ARCHA,ArchAngel Token,Crypto,1669,9342.0,r/ArchAngelToken
+BIFI,Beefy.Finance,Crypto,2877,9199.0,r/Beefy
+MUSKY,MuskyDoge,Crypto,1690,8902.0,r/MuskyDoge
+BNK,Bankera,Crypto,1530,8901.0,r/Bankera
+PIT,Pitbull,Crypto,2128,8807.0,r/pitbulltoken
+BITF,Bitfarms Ltd.,Stock,1501,8803.0,r/BitfarmsMining
+PYE,CreamPYE,Crypto,1992,8418.0,r/CreamPYE
+ELF,aelf,Crypto,6118,8296.0,r/aelfofficial
+PORNROCKET,PornRocket,Crypto,1552,8194.0,r/PornRocketArmy
+CGC,Canopy Growth Corporation,Stock,1801,8186.0,r/CanopyGrowthCorp
+LCX,LCX,Crypto,1802,8099.0,r/lcx
+VOLT,Volt Inu,Crypto,2395,8089.0,r/Volt_Inu
+PART,Particl,Crypto,3135,7793.0,r/Particl
+SRK,SparkPoint,Crypto,2026,7732.0,r/SparkPoint
+COLX,ColossusXT,Crypto,2075,7718.0,r/ColossuscoinX
+BRISE,Bitgert,Crypto,1635,7183.0,r/Bitgert
+WOW,Wownero,Crypto,4260,6698.0,r/Wownero
+Various,Seasonal Tokens Project,Crypto,2015,6681.0,r/SeasonalTokens
+EH,EHang Holdings Limited,Stock,1975,6524.0,r/ehangstock
+AVA,Travala.com,Crypto,3137,6277.0,r/Travala
+SKL,SKALE Network,Crypto,3061,6217.0,r/SKALEnetwork
+CLO,Callisto Network,Crypto,3050,6180.0,r/CallistoCrypto
+LOWB,LoserCoin,Crypto,2888,6152.0,r/Losercoin_Official
+FUCK,FUCK Token,Crypto,2066,6014.0,r/FUCKfaucet
+ZEN,Horizen,Crypto,3661,6008.0,r/Horizen
+ADX,AdEx Network (Ambire AdEx),Crypto,1745,5990.0,r/AdEx
+AR,Arweave,Crypto,1998,5982.0,r/Arweave
+AAVE,Aave,Crypto,4964,5830.0,r/Aave_Official
+QRL,Quantum Resistant Ledger,Crypto,2120,5731.0,r/QRL
+DIVI,Divi Project,Crypto,2127,5636.0,r/DiviProject
+AIRB,BillionAir,Crypto,2058,5550.0,r/BillionAir
+ENS,Ethereum Name Service,Crypto,4660,5517.0,r/ENSMarket
+BEAM,Beam,Crypto,1682,5444.0,r/beamprivacy
+CATS,CatCoin,Crypto,1905,5302.0,r/catcoinarmy
+BTCZ,BitcoinZ,Crypto,2226,5226.0,r/BTCZCommunity
+DCN,Dentacoin,Crypto,2545,5096.0,r/Dentacoin
+XDN,DigitalNote,Crypto,1763,5037.0,r/digitalNote
+ALPH,Alephium,Crypto,1896,5019.0,r/Alephium
+GEMS,Algogems,Crypto,1986,4986.0,r/Algogems
+HPB,High Performance Blockchain,Crypto,2668,4971.0,r/HPB_Global
+UBT,Unibright,Crypto,1830,4963.0,r/Unibright
+UBQ,Ubiq,Crypto,1636,4821.0,r/Ubiq
+MTL,Metal Pay,Crypto,1807,4805.0,r/MetalPay
+GET,GET Protocol,Crypto,1737,4753.0,r/GETprotocol
+KEY,SelfKey,Crypto,2332,4700.0,r/selfkey
+IQ,IQ.wiki (formerly Everipedia),Crypto,3722,4504.0,r/Everipedia
+MNW,Morpheus.Network,Crypto,1751,4449.0,r/MorpheusNetwork
+TIT,Titcoin,Crypto,1833,4189.0,r/showmytitcoin
+UFT,UniLend Finance,Crypto,13080,3879.0,r/UniLend
+FTC,Feathercoin,Crypto,1509,3446.0,r/FeatherCOin
+AUTO,Autofarm,Crypto,1513,3380.0,r/AutoFarmNetwork
+WBD,Warner Bros. Discovery Inc.,Stock,1990,3294.0,r/wbdstock
+CSC,CasinoCoin,Crypto,10952,3228.0,r/casinocoin
+AG,First Majestic Silver Corp.,Stock,2477,3168.0,r/FirstMajesticSilver
+XCP,Counterparty,Crypto,1588,3118.0,r/counterparty_xcp
+SPX6900,S&P 500 Index Options (Speculative Target),Crypto,5463,0.0,r/spx6900
